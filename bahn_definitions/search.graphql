@@ -1,0 +1,48 @@
+query Search($searchTerm: String){
+        search(searchTerm: $searchTerm) {
+        stations {
+            name
+            primaryEvaId
+            hasLocalPublicTransport
+            hasTaxiRank
+            hasSteplessAccess
+            hasWiFi
+            picture {
+                id
+                url
+                license
+                photographer {
+                    name
+                    url
+                }
+            }
+            location {
+                latitude
+                longitude
+            }
+            timetable {
+                nextArrivals{
+                    type
+                    trainNumber
+                    platform
+                    time
+                    stops
+                }
+                nextDepatures {
+                    type
+                    trainNumber
+                    platform
+                    time
+                    stops
+                }
+            }
+            tracks {
+                platform
+                number
+                name
+                length
+                height
+            }
+        }
+    }
+}

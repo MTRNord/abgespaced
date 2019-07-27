@@ -1,0 +1,48 @@
+query Nearby($latitude: Float!, $longitude: Float!, $radius: Int = 10000, $count: Int = 10){
+    nearby(latitude: $latitude, longitude: $longitude, radius: $radius) {
+        stations(count: $count) {
+            name
+            primaryEvaId
+            hasLocalPublicTransport
+            hasTaxiRank
+            hasSteplessAccess
+            hasWiFi
+            picture {
+                id
+                url
+                license
+                photographer {
+                    name
+                    url
+                }
+            }
+            location {
+                latitude
+                longitude
+            }
+            timetable {
+                nextArrivals{
+                    type
+                    trainNumber
+                    platform
+                    time
+                    stops
+                }
+                nextDepatures {
+                    type
+                    trainNumber
+                    platform
+                    time
+                    stops
+                }
+            }
+            tracks {
+                platform
+                number
+                name
+                length
+                height
+            }
+        }
+    }
+}
